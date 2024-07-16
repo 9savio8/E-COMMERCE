@@ -23,13 +23,13 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body;
     // Verifica la password
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, User.password);
     if (!isMatch) {
-        return res.status(400).json({ message: 'Invalid username or password' });
+        return res.status(400).json({ message: 'Invalid email or password' });
     }
 
     // Genera un token JWT
-    const token = jwt.sign({ username: user.username }, 'secretkey', { expiresIn: '1h' });
+    const token = jwt.sign({ email: User.email }, 'secretkey', { expiresIn: '1h' });
 
     res.status(200).json({ token });
 };
