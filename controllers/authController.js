@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/userModel');
+const User = require('../models/usersModel');
 
 // Funzioni per registrare un nuovo utente
 const register = async (req, res) => {
@@ -10,7 +10,7 @@ const register = async (req, res) => {
         // Hash della password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        //nuovo User utilizzndo UserModel
+        //nuovo User utilizzando UserModel
         const newUser = User.addUser(id,email,name,surname,dateOfBirth,address);
         res.status(200).json({ message: 'User added succefully', user: newUser});
     } catch (errore) {
@@ -23,13 +23,13 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body;
     // Verifica la password
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, User.password);
     if (!isMatch) {
         return res.status(400).json({ message: 'Invalid username or password' });
     }
 
     // Genera un token JWT
-    const token = jwt.sign({ username: user.username }, 'secretkey', { expiresIn: '1h' });
+    const token = jwt.sign({ email: User.email }, 'secretkey', { expiresIn: '1h' });
 
     res.status(200).json({ token });
 };
