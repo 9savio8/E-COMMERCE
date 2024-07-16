@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 
 // Rotte
 app.use('/auth', authRoutes);
+
 app.get('/', (req,res) => {
     res.send({message: 'api di root non implementata'})
 })
