@@ -19,7 +19,7 @@ return newUser;
 };
 
 const findUserByName = (name) => {
-    return users.find(user => user.username === username);
+    return users.find(user => user.email === email);
 };
 
 
