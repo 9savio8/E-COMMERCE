@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize')
-const sequelize = require('sequelize')
+const sequelize = require('../config/database')
 const products = require('./productsModel')
+const users = require('./usersModel')
 
 const carts = sequelize.define('carts', {
     Cartsid: 
@@ -16,7 +17,7 @@ const carts = sequelize.define('carts', {
         allowNull: false,
         defaultValue: 0.00
     },
-    Userid: 
+    Usersid: 
     {
         type: DataTypes.INTEGER,
         allowNull: true,
