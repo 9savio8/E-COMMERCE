@@ -6,11 +6,11 @@ To install packages dependecies, run
 
 To start, run 
 
-"npm start"
+"npm run start"
 
 To start in dev environment, run 
 
-"npm dev"
+"npm run dev"
 
 
 ## Come creare il database in locale (temporaneo)
