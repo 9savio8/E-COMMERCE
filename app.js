@@ -1,21 +1,18 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-/*rotte 
-da 
-importare*/
 
-const app = express()
+const express = require('express');
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/authRoutes');
 
-app.use(bodyParser.json())
+const app = express();
 
-/*rotte da utilizzare
-app.use('...', rotta)
-*/
+// Middleware
+app.use(bodyParser.json());
 
-app.get('/', (req, res)=>{
-    res.send({mesage: 'api di root non implementata'})
+// Rotte
+app.use('/auth', authRoutes);
+app.get('/', (req,res) => {
+    res.send({message: 'api di root non implementata'})
 })
 
-module.exports = app
-
+module.exports = app;
 
