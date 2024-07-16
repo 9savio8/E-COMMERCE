@@ -33,3 +33,11 @@ CREATE TABLE carts (
   PRIMARY KEY (Cartsid),
   FOREIGN KEY (Usersid) REFERENCES users(Usersid) 
 );
+CREATE TABLE orders (
+    Ordersid int NOT NULL AUTO_INCREMENT,
+    TotalPrice DEC(10,2) UNSIGNED DEFAULT 0,
+    Products JSON,
+    Usersid int,
+    PRIMARY KEY (Ordersid),
+    FOREIGN KEY (Usersid) REFERENCES users(Usersid)
+);
