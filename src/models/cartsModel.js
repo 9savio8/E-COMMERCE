@@ -26,7 +26,8 @@ const carts = sequelize.define('carts', {
         }
 
     },
-    products: {
+    products: 
+    {
         type: DataTypes.JSON,
         allowNull: true
     }
