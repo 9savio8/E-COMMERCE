@@ -1,3 +1,4 @@
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
@@ -15,3 +16,4 @@ app.get('/', (req,res) => {
 })
 
 module.exports = app;
+
