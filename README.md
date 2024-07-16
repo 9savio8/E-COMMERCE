@@ -41,7 +41,7 @@ CREATE TABLE users (
     UserName varchar(255) NOT NULL,  
     Email varchar(255) NOT NULL,  
     Password varchar(255) NOT NULL,  
-    IsAdmin bool DEFAULT false,  
+    Role varchar(255) DEFAULT "common",  
     PRIMARY KEY (Usersid)  
 );
 

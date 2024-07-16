@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../src/models/usersModel');
+const User = require('../models/usersModel');
 
 // Funzioni per registrare un nuovo utente
 const register = async (req, res) => {
@@ -49,4 +49,3 @@ module.exports = {
     login,
     getUserById
 };
-
