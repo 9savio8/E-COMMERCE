@@ -4,16 +4,16 @@ const User = require('../models/usersModel');
 
 // Funzioni per registrare un nuovo utente
 const register = async (req, res) => {
-    const { id, email, password, name, surname, dateOfBirth, address } = req.body;
+    const {Email, Password, UserName, isAdmin } = req.body;
 
     try {
         // Hash della password
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(Password, 10);
 
         //nuovo User utilizzando UserModel
-        const newUser = User.addUser(id,email,name,surname,dateOfBirth,address);
+        const newUser = User.addUser(UserName,Email, Password, isAdmin);
         res.status(200).json({ message: 'User added succefully', user: newUser});
-    } catch (errore) {
+    } catch (error) {
         res.status(400).json({ message: error.message});
     }
 

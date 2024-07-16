@@ -21,7 +21,7 @@ const users = sequelize.define('users', {
     },
     Password: 
     {
-        type: DataTypes.INTEGER(255),
+        type: DataTypes.STRING(255),
         allowNull: false
     },
     isAdmin: 
