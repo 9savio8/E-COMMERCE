@@ -38,6 +38,14 @@ CREATE TABLE orders (
     TotalPrice DEC(10,2) UNSIGNED DEFAULT 0,
     Products JSON,
     Usersid int,
+    Name varchar(255),
+    Surname varchar(255),
+    Address varchar(255),
+    CAP varchar(255),
+    City varchar(255),
+    Region varchar(255),
+    Nation varchar(255),
+    Time DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (Ordersid),
     FOREIGN KEY (Usersid) REFERENCES users(Usersid)
 );
