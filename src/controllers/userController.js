@@ -1,5 +1,5 @@
 // Importa il modello User
-const User = require('./userController');
+const User = require('./userModel');
 
 // Simulazione di un database
 const users = [];
