@@ -2,7 +2,7 @@
 const User = require('../models/usersModel');
 
 // Simulazione di un database
-const users = [];
+
 
 // Funzioni per interagire con il "database"
 const addUser = (id,email,name,surname, dateOfBird, address, hashedPassword) => {

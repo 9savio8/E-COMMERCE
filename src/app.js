@@ -11,7 +11,6 @@ console.log('All models successfully syncronized')
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    console.log('okay?')
     res.send({message: 'api di root non implementata'})
 })
 
