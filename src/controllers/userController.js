@@ -47,9 +47,7 @@ exports.deleteUser = async (req, res) => {
 };
 
 module.exports = {
-    addUser,
     findUserByName,
-    findUserById,
-    deleteUser,
+    findUserById
 };
 
