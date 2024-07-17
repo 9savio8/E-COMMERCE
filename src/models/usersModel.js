@@ -24,11 +24,11 @@ const users = sequelize.define('users', {
         type: DataTypes.STRING(255),
         allowNull: false
     },
-    isAdmin: 
+    Role:
     {
-        type: DataTypes.TINYINT,
+        type: DataTypes.STRING,
         allowNull: true,
-        defaultValue: 0
+        defaultValue: 'common'
     }
 },{
     freezeTablename: 'users',
