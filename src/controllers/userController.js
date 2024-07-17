@@ -18,8 +18,9 @@ Users.push(newUser);
 return newUser;
 };*/
 
-const findUserByName = (name) => {
-    return Users.find(user => user.email === email);
+const findUserByName = (email) => {
+    return users.find(user => user.email === email);
+
 };
 
 
@@ -28,9 +29,27 @@ const findUserById = (id) => {
     return Users.find(user => user.id === id);
 };
 
+// Elimina un utente
+exports.deleteUser = async (req, res) => {
+    try {
+        const { email } = req.params;
+        const deleted = await category.destroy({
+            where: { email: email }
+        });
+        if (deleted) {
+            res.status(204).json();
+        } else {
+            res.status(404).json({ error: 'User not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     addUser,
     findUserByName,
-    findUserById
+    findUserById,
+    deleteUser,
 };
 
