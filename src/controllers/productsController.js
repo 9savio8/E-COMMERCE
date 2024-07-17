@@ -44,7 +44,7 @@ exports.getProductById = async (req, res) => {
 };
 
 // Ottieni un prodotto per categoria
-exports.getProductById = async (req, res) => {
+exports.getProductByCategory = async (req, res) => {
     try {
         const { category } = req.params;
         const product = await Product.findByCategory(category);
