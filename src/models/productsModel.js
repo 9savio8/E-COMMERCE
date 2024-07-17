@@ -30,6 +30,11 @@ const products = sequelize.define('products', {
     {
         type: DataTypes.INTEGER,
         allowNull: true
+    },
+    category: 
+    {
+        type: DataTypes.STRING(255),
+        allowNull: false
     }
     
 },
