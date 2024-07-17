@@ -16,6 +16,15 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authRoutes);
 
+// Middleware per gestire il parsing dei JSON
+app.use(express.json());
+
+// Usa le rotte dei prodotti
+app.use('/api', productRoutes);
+
+// Usa le rotte del carrello
+app.use('/api', cartRoutes);
+
 module.exports = app;
 
 app.listen(3000, (req, res)=>{
