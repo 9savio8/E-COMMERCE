@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const Product = require('../models/products');
+const Product = require('../models/productsModel');
 
 // Restituisce il contenuto attuale del carrello dell'utente
 exports.getCart = (req, res) => {

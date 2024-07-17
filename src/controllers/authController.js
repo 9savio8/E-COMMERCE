@@ -35,7 +35,7 @@ const login = async (req, res) => {
             return res.status(400).json({ message: 'Invalid email or password' });
         }
         // Genera un token JWT
-        const token = jwt.sign({ email: user.email, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.usersid, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.status(200).json({ token });
     } else {
         res.status(404).json({message:'user not found!'});
@@ -53,7 +53,18 @@ const login = async (req, res) => {
         }
     };
 
+    const userLogOut = (req, res)=> {
+        console.log('logout-----------------------------------------------------<<<<<<<<<<<<<<<<<<<<<<<')
+        const disc = 'utente disconnesso correttamente'
+        if(disc){
+            res.status(200).json({message: disc})
+        }else{
+            res.status(400).json({message: err.message})
+        }
+    };
+
 module.exports = {
+    userLogOut,
     register,
     login,
     getUserById
