@@ -28,11 +28,11 @@ exports.getAllProducts = async (req, res) => {
     }
 };
 
-// Ottieni un prodotto per ID
+// Ottieni un prodotto per nome
 exports.getProductById = async (req, res) => {
     try {
-        const { id } = req.params;
-        const product = await Product.findByPk(id);
+        const { Name } = req.params;
+        const product = await Product.findByPk(Name);
         if (product) {
             res.status(200).json(product);
         } else {
