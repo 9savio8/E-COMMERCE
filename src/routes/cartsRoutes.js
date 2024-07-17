@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const cartController = require('../controllers/cartController');
+const cartController = require('../controllers/cartsController');
 
 // Rotta per ottenere il contenuto del carrello
 router.get('/cart', cartController.getCart);
