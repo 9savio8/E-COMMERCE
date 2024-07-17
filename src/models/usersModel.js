@@ -24,7 +24,9 @@ const users = sequelize.define('users', {
         type: DataTypes.STRING(255),
         allowNull: false
     },
+
     role: 
+
     {
         type: DataTypes.STRING,
         allowNull: true,
