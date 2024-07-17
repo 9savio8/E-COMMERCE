@@ -2,29 +2,31 @@ const { DataTypes } = require('sequelize')
 const sequelize = require('../config/database')
 
 const users = sequelize.define('users', {
-    Userid : 
+    usersid : 
     {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true
     },
-    UserName: 
+    userName: 
     {
         type: DataTypes.STRING(255),
         allowNull: false
     },
-    Email: 
+    email: 
     {
         type: DataTypes.STRING(255),
         allowNull: false
     },
-    Password: 
+    password: 
     {
         type: DataTypes.STRING(255),
         allowNull: false
     },
-    Role:
+
+    role: 
+
     {
         type: DataTypes.STRING,
         allowNull: true,
