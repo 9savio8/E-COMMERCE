@@ -13,6 +13,11 @@ const register = async (req, res) => {
 }
 
     try {
+
+        let user = await user.findOne({where: {email}})
+        if(user){
+            return res.status(404).send('utente esiste già')
+        }
         // Hash della password
         const hashedPassword = await bcrypt.hash(password, 10);
 
