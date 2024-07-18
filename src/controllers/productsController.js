@@ -1,14 +1,14 @@
-const { Op } = require('sequelize');
 const Product = require('../models/productsModel');
+
 
 // Crea un nuovo prodotto
 exports.createProduct = async (req, res) => {
     try {
-        const { Name, Price, Quantity, info, idcategory} = req.body;
+        const { name, price, quantity, info, idcategory} = req.body;
         const newProduct = await Product.create({
-            Name,
-            Price,
-            Quantity,
+            name,
+            price,
+            quantity,
             info,
             idcategory
         });
@@ -31,8 +31,8 @@ exports.getAllProducts = async (req, res) => {
 // Ottieni un prodotto per nome
 exports.getProductById = async (req, res) => {
     try {
-        const { Name } = req.params;
-        const product = await Product.findByPk(Name);
+        const id = req.params.id;
+        const product = await Product.findByPk(id);
         if (product) {
             res.status(200).json(product);
         } else {
@@ -61,10 +61,10 @@ exports.getProductByCategory = async (req, res) => {
 // Aggiorna un prodotto
 exports.updateProduct = async (req, res) => {
     try {
-        const { id } = req.params;
-        const { Name, Price, Quantity, info } = req.body;
+        const id = req.params.id;
+        const { name, price, quantity, info } = req.body;
         const [updated] = await Product.update(
-            { Name, Price, Quantity, info },
+            { name, price, quantity, info },
             { where: { Productsid: id } }
         );
         if (updated) {
