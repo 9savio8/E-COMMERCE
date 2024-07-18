@@ -40,7 +40,7 @@ exports.getAllOrders = async (req, res) => {
 // Ottieni un ordini per id
 exports.getOrderById = async (req, res) => {
     try {
-        const { ordersId } = req.params;
+        const ordersId = req.params.id;
         const order = await Orders.findByPk(ordersId);
         if (order) {
             res.status(200).json(order);
@@ -99,9 +99,9 @@ exports.updateOrder = async (req, res) => {
 // Elimina un ordine
 exports.deleteOrder = async (req, res) => {
     try {
-        const { id } = req.params;
+        const id = req.params.id;
         const deleted = await Orders.destroy({
-            where: { ordersId: id }
+            where: { id }
         });
         if (deleted) {
             res.status(204).json();

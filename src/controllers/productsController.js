@@ -61,7 +61,7 @@ exports.getProductByCategory = async (req, res) => {
 // Aggiorna un prodotto
 exports.updateProduct = async (req, res) => {
     try {
-        const id = req.params.id;
+        const  id  = req.params.id;
         const { name, price, quantity, info } = req.body;
         const [updated] = await Product.update(
             { name, price, quantity, info },
