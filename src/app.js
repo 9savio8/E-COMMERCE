@@ -1,15 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
+
 const cartsRoutes = require('./routes/cartsRoutes')
 const ordersRoutes = require('./routes/ordersRoutes')
 const productsRoutes = require('./routes/productsRoutes')
+
 const categoriesRoutes = require('./routes/categoriesRoutes')
 const config = require('./config/config')
 const sequelize = require('./config/database') 
 const app = express();
 
-sequelize.sync()
+sequelize.sync()// per creare il database
 console.log('All models successfully syncronized')
 
 app.use(express.json())
