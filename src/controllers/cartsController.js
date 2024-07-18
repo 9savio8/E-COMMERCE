@@ -8,8 +8,8 @@ exports.getCart = (req, res) => {
 
 // Aggiunge un prodotto al carrello dell'utente
 exports.addToCart = (req, res) => {
-    const { product } = req.params;
-    const { quantity } = req.body;
+    const product  = req.params;
+    const quantity = req.body;
     
     const productInCart = cart.find(product => product.id === id);
     if (productInCart) {
@@ -22,7 +22,7 @@ exports.addToCart = (req, res) => {
 
 // Rimuove un prodotto dal carrello dell'utente
 exports.removeFromCart = (req, res) => {
-    const { id } = req.params;
+    const id = req.params.id;
     cart = cart.filter(item => item.id !== id);
     res.status(200).json(cart);
 };

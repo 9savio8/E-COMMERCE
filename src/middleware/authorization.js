@@ -2,10 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
 function verifyAdmin(req, res, next) {
- // var token = req.header('Authorization');
-  //token = token.substring(7, token.length);
   try {
-    //const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const role = req.role
     if (role != "admin"){
       console.log("ok");

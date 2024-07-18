@@ -6,7 +6,7 @@ const cartController = require('../controllers/cartsController');
 router.get('/', cartController.getCart);
 
 // Rotta per aggiungere un prodotto al carrello
-router.post('/add/:id', cartController.addToCart);
+router.post('/add', cartController.addToCart);
 
 // Rotta per rimuovere un prodotto dal carrello
 router.delete('/remove/:id', cartController.removeFromCart);
