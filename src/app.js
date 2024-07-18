@@ -1,10 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
-const cartsRoutes = require('./routes/cartsRoutes')
-const categoriesRoutes = require('./routes/categoriesRoutes')
-const config = require('./config/config')
-const sequelize = require('./config/database') 
+const cartRoutes = require('./routes/cartsRoutes');
+const productRoutes = require('./routes/productsRoutes');
+const orderRoutes = require('./routes/productsRoutes');
+const categoriesRoutes = require('./routes/categoriesRoutes');
+const config = require('./config/config');
+const sequelize = require('./config/database');
 const app = express();
 
 sequelize.sync()
@@ -26,7 +28,7 @@ app.use('/auth', authRoutes);
 app.use('/api', productRoutes);
 
 // Usa le rotte del carrello
-app.use('/api', cartsRoutes);
+app.use('/api', cartRoutes);
 
 //Usa le rotte degli ordini
 app.use('/api', orderRoutes)
