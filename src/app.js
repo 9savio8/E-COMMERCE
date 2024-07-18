@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const cartRoutes = require('./routes/cartsRoutes')
+const categoriesRoutes = require('./routes/categoriesRoutes')
 const config = require('./config/config')
 const sequelize = require('./config/database') 
 const app = express();
@@ -25,6 +26,9 @@ app.use(express.json());
 
 // Usa le rotte del carrello
 app.use('/api', cartRoutes);
+
+// Usa le rotte delle categorie
+app.use('/api/category', categoriesRoutes);
 
 module.exports = app;
 
