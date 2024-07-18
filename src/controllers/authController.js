@@ -1,20 +1,13 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/usersModel');
-const users = require('../models/usersModel');
 const dotenv = require('dotenv').config();
 
 // Funzioni per registrare un nuovo utente
 const register = async (req, res) => {
     const {email, password, userName, role } = req.body;
-    const existingUserByEmail = findUserByEmail(users.email);
-    if (existingUserByEmail) {
-        throw new Error('User with this email already exists');
-}
-
     try {
-
-        let user = await user.findOne({where: {email}})
+        let user = await User.findOne({where: {email}})
         if(user){
             return res.status(404).send('utente esiste già')
         }
@@ -33,11 +26,6 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
-
-    console.log(user)
-
-    console.log(req.body)
-
     if (user) {
         // Verifica la password
         const isMatch = await bcrypt.compare(password, user.password);
@@ -50,7 +38,6 @@ const login = async (req, res) => {
     } else {
         res.status(404).json({message:'user not found!'});
     }
-    
 };
     // Funzione per cercare utente per id
     const getUserById = async (req,res) => {
