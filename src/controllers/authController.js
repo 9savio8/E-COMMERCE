@@ -1,11 +1,13 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/usersModel');
+const users = require('../models/usersModel');
 const dotenv = require('dotenv').config();
 
 // Funzioni per registrare un nuovo utente
 const register = async (req, res) => {
     const {email, password, userName, role } = req.body;
+    const existingUserByEmail = await findUserByEmail(users.email);
 
     try {
         // Hash della password
