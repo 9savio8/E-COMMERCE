@@ -25,8 +25,8 @@ exports.getAllCategories = async (req, res) => {
 // Ottieni un categoria per nome
 exports.getCategoryById = async (req, res) => {
     try {
-        const { name } = req.params;
-        const category = await Model.findByPk(name);
+        const id = req.params.id;
+        const category = await Model.findByPk(id);
         if (category) {
             res.status(200).json(category);
         } else {
