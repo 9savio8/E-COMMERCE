@@ -15,16 +15,20 @@ app.get('/', (req, res) => {
     res.send({message: 'api di root non implementata'})
 })
 
-app.use('/auth', authRoutes);
-
 // Middleware per gestire il parsing dei JSON
 app.use(express.json());
 
+//Usa le rotte per l'autenticazione
+app.use('/auth', authRoutes);
+
 // Usa le rotte dei prodotti
-//app.use('/api', productRoutes);
+app.use('/api', productRoutes);
 
 // Usa le rotte del carrello
-app.use('/api', cartRoutes);
+app.use('/api', cartsRoutes);
+
+//Usa le rotte degli ordini
+app.use('/api', orderRoutes)
 
 module.exports = app;
 
