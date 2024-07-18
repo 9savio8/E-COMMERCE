@@ -11,13 +11,14 @@ router.post('/create',[verifyToken,verifyAdmin], productsController.createProduc
 router.get('/getAll', productsController.getAllProducts);
 
 // Rotta per ottenere prodotti per ID
-router.post('/:id', productsController.getProductById);
+router.get('/:id', productsController.getProductById);
 
 // Rotta per ottenere prodotti per categoria
-router.post('/:category', productsController.getProductByCategory);
+//router.get('/:category', productsController.getProductByCategory);
 
 // Rotta per aggiornare un prodotto
-router.post('/update',[verifyToken,verifyAdmin], productsController.updateProduct);
+router.put('/update/:id',[verifyToken,verifyAdmin], productsController.updateProduct);
+
 
 // Rotta per rimuovere un prodotto
 router.delete('/remove/:id',[verifyToken,verifyAdmin], productsController.deleteProduct);
