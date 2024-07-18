@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const cartsRoutes = require('./routes/cartsRoutes')
 const ordersRoutes = require('./routes/ordersRoutes')
-const productRoutes = require('./routes/productsRoutes')
+const productsRoutes = require('./routes/productsRoutes')
 const categoriesRoutes = require('./routes/categoriesRoutes')
 const config = require('./config/config')
 const sequelize = require('./config/database') 
@@ -25,7 +25,7 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 
 // Usa le rotte dei prodotti
-app.use('/api', productRoutes);
+app.use('/api', productsRoutes);
 
 // Usa le rotte del carrello
 app.use('/api', cartsRoutes);
