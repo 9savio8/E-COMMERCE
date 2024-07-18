@@ -20,53 +20,53 @@ CREATE DATABASE examplecommerce;
 \use examplecommerce;
 
 CREATE TABLE categories (  
-Categoriesid int NOT NULL AUTO_INCREMENT,  
-Name varchar(255) NOT NULL,  
-PRIMARY KEY (Categoriesid)  
+categoriesId int NOT NULL AUTO_INCREMENT,  
+name varchar(255) NOT NULL,  
+PRIMARY KEY (categoriesId)  
 );
 
 CREATE TABLE products (  
-    Productsid int NOT NULL AUTO_INCREMENT,  
-    Name varchar(255) NOT NULL,  
-    Price dec(10,2) UNSIGNED NOT NULL,  
-    Quantity int DEFAULT 0,  
-    Info mediumtext,  
-    PRIMARY KEY (Productsid),  
-    Categoriesid int,  
-    FOREIGN KEY (Categoriesid) REFERENCES categories(Categoriesid)  
+    productsId int NOT NULL AUTO_INCREMENT,  
+    name varchar(255) NOT NULL,  
+    price dec(10,2) UNSIGNED NOT NULL,  
+    quantity int DEFAULT 0,  
+    info mediumtext,  
+    PRIMARY KEY (productsId),  
+    categoriesId int,  
+    FOREIGN KEY (categoriesId) REFERENCES categories(categoriesId)  
 );
 
 CREATE TABLE users (  
-    Usersid int NOT NULL AUTO_INCREMENT,  
-    UserName varchar(255) NOT NULL,  
-    Email varchar(255) NOT NULL,  
-    Password varchar(255) NOT NULL,  
-    Role varchar(255) DEFAULT "common",  
-    PRIMARY KEY (Usersid)  
+    usersId int NOT NULL AUTO_INCREMENT,  
+    userName varchar(255) NOT NULL,  
+    email varchar(255) NOT NULL,  
+    password varchar(255) NOT NULL,  
+    role varchar(255) DEFAULT "common",  
+    PRIMARY KEY (usersId)  
 );
 
 CREATE TABLE carts (  
-  Cartsid int NOT NULL AUTO_INCREMENT,  
-  TotalPrice decimal(10,2) unsigned NOT NULL DEFAULT 0.00,  
-  Usersid int,  
-  Products json DEFAULT NULL,  
-  PRIMARY KEY (Cartsid),  
-  FOREIGN KEY (Usersid) REFERENCES users(Usersid)   
+  cartsId int NOT NULL AUTO_INCREMENT,  
+  totalPrice decimal(10,2) unsigned NOT NULL DEFAULT 0.00,  
+  usersId int,  
+  products json DEFAULT NULL,  
+  PRIMARY KEY (cartsId),  
+  FOREIGN KEY (usersId) REFERENCES users(usersId)   
 );
 
 CREATE TABLE orders (  
-    Ordersid int NOT NULL AUTO_INCREMENT,  
-    TotalPrice DEC(10,2) UNSIGNED DEFAULT 0,  
-    Products JSON,  
-    Usersid int,  
-    Name varchar(255),  
-    Surname varchar(255),  
-    Address varchar(255),  
-    CAP varchar(255),  
-    City varchar(255),  
-    Region varchar(255),  
-    Nation varchar(255),  
-    Time DATETIME DEFAULT CURRENT_TIMESTAMP,  
-    PRIMARY KEY (Ordersid),  
-    FOREIGN KEY (Usersid) REFERENCES users(Usersid)  
+    ordersId int NOT NULL AUTO_INCREMENT,  
+    totalPrice DEC(10,2) UNSIGNED DEFAULT 0,  
+    products JSON,  
+    usersId int,  
+    name varchar(255),  
+    surname varchar(255),  
+    address varchar(255),  
+    cAP varchar(255),  
+    city varchar(255),  
+    region varchar(255),  
+    nation varchar(255),  
+    time DATETIME DEFAULT CURRENT_TIMESTAMP,  
+    PRIMARY KEY (ordersId),  
+    FOREIGN KEY (usersId) REFERENCES users(usersId)  
 );
