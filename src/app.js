@@ -31,7 +31,7 @@ app.use('/api/products', productsRoutes);
 
 // Usa le rotte del carrello
 app.use('/api/carts', cartsRoutes);
-
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6IkFkbWluIiwiaWF0IjoxNzIxMzI3NDEwLCJleHAiOjE3MjEzMzEwMTB9.EGJg5yIlWJMeCYanJf_0164F6ibB7q8MpPYlRqUvEcE
 //Usa le rotte degli ordini
 app.use('/api/orders', ordersRoutes)
 

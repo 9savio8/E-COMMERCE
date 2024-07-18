@@ -11,3 +11,4 @@ router.put('/update/:id',verifyToken,categoriesController.updateCategory)
 router.delete('/delete/:id',verifyToken,categoriesController.deleteCategory)
 
 module.exports = router;
+module.exports = router;
