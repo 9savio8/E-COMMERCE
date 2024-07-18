@@ -4,8 +4,8 @@ const Model = require('../models/categoriesModel');
 // Crea un nuova categoria
 exports.createCategory = async (req, res) => {
     try {
-        const {Name} = req.body;
-        const newCategory = await Model.create({Name});
+        const { name } = req.body;
+        const newCategory = await Model.create({name:name});
         res.status(201).json(newCategory);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -59,9 +59,10 @@ exports.updateCategory = async (req, res) => {
 // Elimina una categoria
 exports.deleteCategory = async (req, res) => {
     try {
-        const { id } = req.params;
+        const id = req.params.id;
+        console.log(req.params)
         const deleted = await Model.destroy({
-            where: { Categoriesid: id ,}
+            where: { Categoriesid: id }
         });
         if (deleted) {
             res.status(204).json();
