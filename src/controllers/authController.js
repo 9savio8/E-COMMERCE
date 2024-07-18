@@ -7,7 +7,10 @@ const dotenv = require('dotenv').config();
 // Funzioni per registrare un nuovo utente
 const register = async (req, res) => {
     const {email, password, userName, role } = req.body;
-    const existingUserByEmail = await findUserByEmail(users.email);
+    const existingUserByEmail = findUserByEmail(users.email);
+    if (existingUserByEmail) {
+        throw new Error('User with this email already exists');
+}
 
     try {
         // Hash della password
