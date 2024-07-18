@@ -70,3 +70,4 @@ CREATE TABLE orders (
     PRIMARY KEY (ordersId),  
     FOREIGN KEY (usersId) REFERENCES users(usersId)  
 );
+"npm run dev"
