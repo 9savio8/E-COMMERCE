@@ -1,13 +1,11 @@
 const { Op } = require('sequelize');
-const Product = require('../models/products');
+const Model = require('../models/categoriesModel');
 
 // Crea un nuova categoria
 exports.createCategory = async (req, res) => {
     try {
-        const { Name} = req.body;
-        const newProduct = await Product.create({
-            Name
-        });
+        const {Name} = req.body;
+        const newCategory = await Model.create({Name});
         res.status(201).json(newCategory);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -17,7 +15,7 @@ exports.createCategory = async (req, res) => {
 // Ottieni tutte le categorie
 exports.getAllCategories = async (req, res) => {
     try {
-        const categories = await Product.findAll();
+        const categories = await Model.findAll();
         res.status(200).json(categories);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -28,11 +26,11 @@ exports.getAllCategories = async (req, res) => {
 exports.getCategoryById = async (req, res) => {
     try {
         const { name } = req.params;
-        const category = await Product.findByPk(name);
+        const category = await Model.findByPk(name);
         if (category) {
             res.status(200).json(category);
         } else {
-            res.status(404).json({ error: 'Product not found' });
+            res.status(404).json({ error: 'Model not found' });
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -51,7 +49,7 @@ exports.updateCategory = async (req, res) => {
             const updatedCategory = await category.findByPk(id);
             res.status(200).json(updatedCategory);
         } else {
-            res.status(404).json({ error: 'Product not found' });
+            res.status(404).json({ error: 'Model not found' });
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -61,14 +59,14 @@ exports.updateCategory = async (req, res) => {
 // Elimina una categoria
 exports.deleteCategory = async (req, res) => {
     try {
-        const { name } = req.params;
-        const deleted = await category.destroy({
-            where: { name: name }
+        const { id } = req.params;
+        const deleted = await Model.destroy({
+            where: { Categoriesid: id ,}
         });
         if (deleted) {
             res.status(204).json();
         } else {
-            res.status(404).json({ error: 'Product not found' });
+            res.status(404).json({ error: 'Model not found' });
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
