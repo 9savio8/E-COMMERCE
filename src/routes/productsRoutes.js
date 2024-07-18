@@ -3,7 +3,8 @@ const router = express.Router();
 const productsController = require('../controllers/productsController');
 
 // Rotta per ottenere tutti i prodotti
-router.get('/products/getAll', productsController.getAllProducts);
+router.post('/products/create', productsController.createProduct)
+router.get('/products/', productsController.getAllProducts);
 
 // Rotta per ottenere prodotti per ID
 router.post('/products/:id', productsController.getProductById);

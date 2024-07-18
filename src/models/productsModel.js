@@ -28,15 +28,14 @@ const products = sequelize.define('products', {
     },
     info: 
     {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(255),
         allowNull: true
     },
-    category: 
+    idcategory: 
     {
-        type: DataTypes.STRING(255),
-        allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
-    
 },
 {
     freezeTablename: 'products',

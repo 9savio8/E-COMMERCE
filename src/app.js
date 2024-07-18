@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const cartRoutes = require('./routes/cartsRoutes')
 const productRoutes = require('./routes/productsRoutes')
-const orderRoutes = require('./routes/productsRoutes')
+const orderRoutes = require('./routes/ordersRoutes')
 const categoriesRoutes = require('./routes/categoriesRoutes')
 const config = require('./config/config')
 const sequelize = require('./config/database') 
 const app = express();
 
-sequelize.sync()
+sequelize.sync()// per creare il database
 console.log('All models successfully syncronized')
 
 app.use(express.json())
@@ -24,11 +24,11 @@ app.use(express.json());
 //Usa le rotte per l'autenticazione
 app.use('/auth', authRoutes);
 
-// Usa le rotte dei prodotti
-app.use('/api', productRoutes);
-
 // Usa le rotte del carrello
 app.use('/api', cartRoutes);
+
+// Usa le rotte dei prodotti
+app.use('/api', productRoutes);
 
 //Usa le rotte degli ordini
 app.use('/api', orderRoutes)

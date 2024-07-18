@@ -1,12 +1,12 @@
 const { Op } = require('sequelize');
-const Product = require('../models/products');
+const Product = require('../models/productsModel');
 const orders = require('../models/ordersModel');
 
 // Crea un nuovo ordine
 exports.createOrder = async (req, res) => {
     try {
         const { ordersId, totalPrice, products, usersId, name, surname, address, cap, city, region, nation, time } = req.body;
-        const newOrder = await Order.create({
+        const newOrder = await orders.create({
             ordersId,
             totalPrice,
             products,
@@ -85,7 +85,7 @@ exports.updateOrder = async (req, res) => {
              } }
         );
         if (updated) {
-            const updatedOrder = await order.findByPk(id);
+            const updatedOrder = await orders.findByPk(id);
             res.status(200).json(updatedOrder);
         } else {
             res.status(404).json({ error: 'Product not found' });
@@ -99,7 +99,7 @@ exports.updateOrder = async (req, res) => {
 exports.deleteOrder = async (req, res) => {
     try {
         const { id } = req.params;
-        const deleted = await order.destroy({
+        const deleted = await orders.destroy({
             where: { ordersId: id }
         });
         if (deleted) {
