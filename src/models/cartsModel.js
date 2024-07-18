@@ -1,7 +1,5 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../config/database')
-const products = require('./productsModel')
-const users = require('./usersModel')
 
 const carts = sequelize.define('carts', {
     cartsid: 
@@ -23,7 +21,7 @@ const carts = sequelize.define('carts', {
         allowNull: true,
         references: {
             model: 'users',
-            key: 'Userid'
+            key: 'usersid'
         }
 
     },
@@ -36,3 +34,5 @@ const carts = sequelize.define('carts', {
     tableName: 'carts', 
     timestamps: false,
 })
+
+module.exports = carts;
