@@ -2,25 +2,25 @@ const { DataTypes } = require('sequelize')
 const sequelize = require('../config/database')
 
 const orders = sequelize.define('orders', {
-    Ordersid: 
+    ordersid: 
     {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true
     },
-    TotalPrice:
+    totalPrice:
     {
         type: DataTypes.DECIMAL(10, 2).UNSIGNED,
         allowNull: true,
         defaultValue: 0.00
     },
-    Products:
+    products:
     {
         type: DataTypes.JSON,
         allowNull: true,
     },
-    Usersid:
+    usersid:
     {
         type: DataTypes.INTEGER,
         allowNull: true,
@@ -30,42 +30,42 @@ const orders = sequelize.define('orders', {
             key: 'usersid', 
         }
     },
-    Name:
+    name:
     {
         type: DataTypes.STRING(255),
         allowNUll: true
     },
-    Surname:
+    surname:
     {
         type: DataTypes.STRING(255),
         allowNull: true
     },
-    Address:
+    address:
     {
         type: DataTypes.STRING(255),
         allowNull: true
     },
-    Cap:
+    cap:
     {
         type: DataTypes.STRING(255),
         allowNull: true
     },
-    City:
+    city:
     {
         type: DataTypes.STRING(255),
         allowNull: true
     },
-    Region:
+    region:
     {
         type: DataTypes.STRING(255),
         allowNull: true
     },
-    Nation:
+    nation:
     {
         type: DataTypes.STRING(255),
         allowNull: true
     },
-    Time:
+    time:
     {
         type: DataTypes.DATE,
         allowNull: true,

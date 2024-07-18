@@ -4,20 +4,20 @@ const products = require('./productsModel')
 const users = require('./usersModel')
 
 const carts = sequelize.define('carts', {
-    Cartsid: 
+    cartsid: 
     {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
-    TotalPrice:
+    totalPrice:
     {
         type: DataTypes.DECIMAL(10, 2).UNSIGNED,
         allowNull: false,
         defaultValue: 0.00
     },
-    Usersid: 
+    usersid: 
     {
         type: DataTypes.INTEGER,
         allowNull: true,
