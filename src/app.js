@@ -25,13 +25,13 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 
 // Usa le rotte dei prodotti
-app.use('/api', productsRoutes);
+app.use('/api/products', productsRoutes);
 
 // Usa le rotte del carrello
-app.use('/api', cartsRoutes);
+app.use('/api/carts', cartsRoutes);
 
 //Usa le rotte degli ordini
-app.use('/api', ordersRoutes)
+app.use('/api/orders', ordersRoutes)
 
 // Usa le rotte delle categorie
 app.use('/api/category', categoriesRoutes);
