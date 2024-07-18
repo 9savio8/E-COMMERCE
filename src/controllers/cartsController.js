@@ -1,5 +1,6 @@
 const { Op } = require('sequelize');
-const Product = require('../models/productsModel');
+const cart= require('../models/cartsModel');
+
 
 // Restituisce il contenuto attuale del carrello dell'utente
 exports.getCart = (req, res) => {
@@ -15,7 +16,7 @@ exports.addToCart = (req, res) => {
     if (productInCart) {
         productInCart.quantity += quantity;
     } else {
-        cart.push({ id, quantity });
+        cart.products.push({ id, quantity });
     }
     res.status(201).json(cart);
 };
