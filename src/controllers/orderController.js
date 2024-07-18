@@ -1,12 +1,13 @@
 const { Op } = require('sequelize');
-const Product = require('../models/productsModel');
-const orders = require('../models/ordersModel');
+
+//const Product = require('../models/products');
+const Orders = require('../models/ordersModel');
 
 // Crea un nuovo ordine
 exports.createOrder = async (req, res) => {
     try {
         const { ordersId, totalPrice, products, usersId, name, surname, address, cap, city, region, nation, time } = req.body;
-        const newOrder = await orders.create({
+        const newOrder = await Orders.create({
             ordersId,
             totalPrice,
             products,
@@ -29,7 +30,7 @@ exports.createOrder = async (req, res) => {
 // Ottieni tutti gli ordini
 exports.getAllOrders = async (req, res) => {
     try {
-        const orders = await orders.findAll();
+        const orders = await Orders.findAll();
         res.status(200).json(orders);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -40,11 +41,11 @@ exports.getAllOrders = async (req, res) => {
 exports.getOrderById = async (req, res) => {
     try {
         const { ordersId } = req.params;
-        const order = await Product.findByPk(ordersId);
+        const order = await Orders.findByPk(ordersId);
         if (order) {
             res.status(200).json(order);
         } else {
-            res.status(404).json({ error: 'Product not found' });
+            res.status(404).json({ error: 'Order not found' });
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -55,7 +56,7 @@ exports.getOrderById = async (req, res) => {
 exports.updateOrder = async (req, res) => {
     try {
         const { ordersId, totalPrice, products, usersId, name, surname, address, cap, city, region, nation, time } = req.body;
-        const [updated] = await category.update(
+        const [updated] = await Orders.update(
             { 
             ordersId,
             totalPrice,
@@ -85,7 +86,7 @@ exports.updateOrder = async (req, res) => {
              } }
         );
         if (updated) {
-            const updatedOrder = await orders.findByPk(id);
+            const updatedOrder = await Orders.findByPk(id);
             res.status(200).json(updatedOrder);
         } else {
             res.status(404).json({ error: 'Product not found' });
@@ -99,7 +100,7 @@ exports.updateOrder = async (req, res) => {
 exports.deleteOrder = async (req, res) => {
     try {
         const { id } = req.params;
-        const deleted = await orders.destroy({
+        const deleted = await Orders.destroy({
             where: { ordersId: id }
         });
         if (deleted) {
