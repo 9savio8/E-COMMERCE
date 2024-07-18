@@ -1,11 +1,11 @@
 const { Op } = require('sequelize');
-const Model = require('../models/categoriesModel');
+const categoriesModel = require('../models/categoriesModel');
 
 // Crea un nuova categoria
 exports.createCategory = async (req, res) => {
     try {
         const { name } = req.body;
-        const newCategory = await Model.create({name:name});
+        const newCategory = await categoriesModel.create({name:name});
         res.status(201).json(newCategory);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -15,7 +15,7 @@ exports.createCategory = async (req, res) => {
 // Ottieni tutte le categorie
 exports.getAllCategories = async (req, res) => {
     try {
-        const categories = await Model.findAll();
+        const categories = await categoriesModel.findAll();
         res.status(200).json(categories);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -26,7 +26,7 @@ exports.getAllCategories = async (req, res) => {
 exports.getCategoryById = async (req, res) => {
     try {
         const id = req.params.id;
-        const category = await Model.findByPk(id);
+        const category = await categoriesModel.findByPk(id);
         if (category) {
             res.status(200).json(category);
         } else {
@@ -40,16 +40,17 @@ exports.getCategoryById = async (req, res) => {
 // Aggiorna una categoria
 exports.updateCategory = async (req, res) => {
     try {
-        const { name } = req.body;
-        const [updated] = await category.update(
-            { name },
-            { where: { name: name } }
+        const id = req.params.id;
+        const name = req.body.name;
+        const updated = await categoriesModel.update(
+            { name : name },
+            { where: { Categoriesid: id } }
         );
         if (updated) {
-            const updatedCategory = await category.findByPk(id);
+            const updatedCategory = await categoriesModel.findByPk(id);
             res.status(200).json(updatedCategory);
         } else {
-            res.status(404).json({ error: 'Model not found' });
+            res.status(404).json({ error: 'Category not found' });
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -61,13 +62,13 @@ exports.deleteCategory = async (req, res) => {
     try {
         const id = req.params.id;
         console.log(req.params)
-        const deleted = await Model.destroy({
+        const deleted = await categoriesModel.destroy({
             where: { Categoriesid: id }
         });
         if (deleted) {
             res.status(204).json();
         } else {
-            res.status(404).json({ error: 'Model not found' });
+            res.status(404).json({ error: 'Category not found' });
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
