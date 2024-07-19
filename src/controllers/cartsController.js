@@ -1,6 +1,4 @@
-const { Op } = require('sequelize');
-const carts= require('../models/cartsModel');
-
+const carts = require('../models/cartsModel');
 
 // Restituisce il contenuto attuale del carrello dell'utente
 exports.getCart = (req, res) => {
@@ -11,7 +9,7 @@ exports.getCart = (req, res) => {
 exports.addToCart = async (req, res) => {
     const idProduct  = req.body.idProduct;
     const quantity = req.body.quantity;
-    const idUser=req.idUser;
+    const idUser = req.idUser;
     var prodotti=[];
     const userCart = await carts.findOne({
         where: { usersid: idUser },
@@ -42,8 +40,8 @@ exports.addToCart = async (req, res) => {
 // Rimuove un prodotto dal carrello dell'utente
 exports.removeFromCart = (req, res) => {
     const id = req.params.id;
-    cart = cart.filter(item => item.id !== id);
-    res.status(200).json(cart);
+    rm = carts.filter(item => item.id !== id);
+    res.status(200).json(rm);
 };
 
 // Svuota il carrello dell'utente

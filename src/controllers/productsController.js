@@ -1,11 +1,10 @@
-const Product = require('../models/productsModel');
-
+const products = require('../models/productsModel');
 
 // Crea un nuovo prodotto
 exports.createProduct = async (req, res) => {
     try {
         const { name, price, quantity, info, idcategory} = req.body;
-        const newProduct = await Product.create({
+        const newProduct = await products.create({
             name,
             price,
             quantity,
@@ -21,8 +20,8 @@ exports.createProduct = async (req, res) => {
 // Ottieni tutti i prodotti
 exports.getAllProducts = async (req, res) => {
     try {
-        const products = await Product.findAll();
-        res.status(200).json(products);
+        const productz = await products.findAll();
+        res.status(200).json(productz);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -32,7 +31,7 @@ exports.getAllProducts = async (req, res) => {
 exports.getProductById = async (req, res) => {
     try {
         const id = req.params.id;
-        const product = await Product.findByPk(id);
+        const product = await products.findByPk(id);
         if (product) {
             res.status(200).json(product);
         } else {
@@ -47,7 +46,7 @@ exports.getProductById = async (req, res) => {
 exports.getProductByCategory = async (req, res) => {
     try {
         const { category } = req.params;
-        const product = await Product.findByCategory(category);
+        const product = await products.findByCategory(category);
         if (product) {
             res.status(200).json(product);
         } else {
@@ -68,7 +67,7 @@ exports.updateProduct = async (req, res) => {
             { where: { Productsid: id } }
         );
         if (updated) {
-            const updatedProduct = await Product.findByPk(id);
+            const updatedProduct = await products.findByPk(id);
             res.status(200).json(updatedProduct);
         } else {
             res.status(404).json({ error: 'Product not found' });
@@ -82,7 +81,7 @@ exports.updateProduct = async (req, res) => {
 exports.deleteProduct = async (req, res) => {
     try {
         const { id } = req.params;
-        const deleted = await Product.destroy({
+        const deleted = await products.destroy({
             where: { Productsid: id }
         });
         if (deleted) {

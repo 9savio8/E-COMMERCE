@@ -1,16 +1,17 @@
-const { Op } = require('sequelize');
+//const { Op } = require('sequelize');
 
-//const Product = require('../models/products');
+const carts = require('../models/cartsModel');
 const Orders = require('../models/ordersModel');
 
 // Crea un nuovo ordine
 exports.createOrder = async (req, res) => {
     try {
-        const { ordersId, totalPrice, products, usersId, name, surname, address, cap, city, region, nation, time } = req.body;
+        const { ordersId, totalPrice, cartsId, usersId, name, surname, address, cap, city, region, nation, time } = req.body;
+        const carlo = await carts.findByPk(cartsId) 
         const newOrder = await Orders.create({
             ordersId,
             totalPrice,
-            products,
+            products: carlo.products,
             usersId,
             name,
             surname,
@@ -53,15 +54,16 @@ exports.getOrderById = async (req, res) => {
 };
 
 // Aggiorna un ordine
+// Alessandro non crede sia utile o sicuro poter aggiornare ogni singola colonna di Orders, e nel dubbio lascia commentato 
 exports.updateOrder = async (req, res) => {
     try {
-        const { ordersId, totalPrice, products, usersId, name, surname, address, cap, city, region, nation, time } = req.body;
+        const { ordersId, /*totalPrice, products,*/ usersId, name, surname, address, cap, city, region, nation, time } = req.body;
         const [updated] = await Orders.update(
             { 
             ordersId,
-            totalPrice,
-            products,
-            usersId,
+            // totalPrice,
+            // products,
+            // usersId,
             name,
             surname,
             address,
@@ -72,9 +74,9 @@ exports.updateOrder = async (req, res) => {
             time },
             { where: { 
                 ordersId: ordersId,
-                totalPrice: totalPrice,
-                products: products,
-                isersId: usersId,
+                // totalPrice: totalPrice,
+                // products: products,
+                usersId: usersId,
                 name: name,
                 surname: surname,
                 address: address,
